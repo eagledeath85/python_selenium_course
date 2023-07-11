@@ -10,7 +10,7 @@ driver = webdriver.Chrome(service=service_object)
 URL = 'https://rahulshettyacademy.com/client'
 
 driver.get(URL)
-
+driver.maximize_window()
 # Look for the text "Forgot password?" link on the web page and click on it
 driver.find_element(By.LINK_TEXT, "Forgot password?").click()
 
@@ -21,7 +21,7 @@ driver.find_element(By.XPATH, "//input[@type='email']").send_keys("user@user.com
 # Here we access to the password field and write it
 driver.find_element(By.XPATH, "//form/div[2]/input").send_keys("123456789")
 
-# Using CSS Selector and tree architecture, it will look likt this
+# Using CSS Selector and tree architecture, it will look like this
 # driver.find_element(By.CSS_SELECTOR, "form div:nth-child(2) input").send_keys("12345678")
 
 # Other way, the simplest using CSS Selector

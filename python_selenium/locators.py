@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.support.select import Select
 
 # -- Chrome web browser
 service_object = Service("C:/Users/aallouche/Documents/Automation/chromedriver_win32/chromedriver.exe")
@@ -26,6 +26,13 @@ driver.find_element(By.CSS_SELECTOR, "input[name='name']").send_keys("namenamena
 # Click on Studnet radio button using CSS Selector and id syntax
 driver.find_element(By.CSS_SELECTOR, "#inlineRadio1").click()
 
+# Static dropdown menus. Use tht Select() class and pass to it the element to find
+dropdown = Select(driver.find_element(By.ID, 'exampleFormControlSelect1'))
+dropdown.select_by_index(1) # will give the second element of the dropdown menu
+dropdown.select_by_visible_text("Male") # will give whatever text is visible in the dropdown menu
+# dropdown.select_by_value("value") # will give the value of the parameter "value" from the Inspector for the inspected element if it exists
+
+
 # Find the Submit button by XPath locator. to submit the form
 # XPath is built following the syntax: tagname[@attribute='value']
 #Thos values are determined by looking in the Inspector tool
@@ -41,5 +48,3 @@ driver.find_element(By.XPATH, "(//input[@type='text'])[3]").send_keys("hello the
 
 # Clear the field
 driver.find_element(By.XPATH, "(//input[@type='text'])[3]").clear()
-
-driver.implicitly_wait(60)
