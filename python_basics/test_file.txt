@@ -1,0 +1,7 @@
+cat
+fish
+elephant
+lion
+ant
+horse
+cow
