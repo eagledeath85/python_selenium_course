@@ -45,4 +45,4 @@ for window_handle in driver.window_handles:
         break
 
 wait.until(EC.title_is(driver.title))
-assert "QAClick Academy" in driver.title
+assert "QAClick Academy" in driver.title, f"Text is missing"

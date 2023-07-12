@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
+
 
 # -- Chrome web browser
 service_object = Service("C:/Users/aallouche/Documents/Automation/chromedriver_win32/chromedriver.exe")
@@ -23,10 +23,13 @@ driver.find_element(By.ID, "exampleCheck1").click()
 # Fill the name field using CSS Selector and standard css syntax
 driver.find_element(By.CSS_SELECTOR, "input[name='name']").send_keys("namenamename")
 
-# Click on Studnet radio button using CSS Selector and id syntax
+# Click on Student radio button using CSS Selector and id syntax
 driver.find_element(By.CSS_SELECTOR, "#inlineRadio1").click()
 
-# Static dropdown menus. Use tht Select() class and pass to it the element to find
+
+# -----------------------------------------------------------
+# Static dropdown menus
+# Use the Select() class and pass to it the element to find
 dropdown = Select(driver.find_element(By.ID, 'exampleFormControlSelect1'))
 dropdown.select_by_index(1) # will give the second element of the dropdown menu
 dropdown.select_by_visible_text("Male") # will give whatever text is visible in the dropdown menu
