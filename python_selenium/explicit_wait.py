@@ -17,8 +17,17 @@ driver.implicitly_wait(2)
 URL = 'https://rahulshettyacademy.com/seleniumPractise/#/'
 driver.get(URL)
 
+# Searching for items containing "ber"
 driver.find_element(By.CSS_SELECTOR, "input[type='search']").send_keys("ber")
 time.sleep(2)
+
+
+# Asserting list contains Cucumber, Raspberry and Strawberry
+original_list = ["Cucumber - 1 Kg", "Raspberry - 1/4 Kg", "Strawberry - 1/4 Kg"]
+products_name = driver.find_elements(By.XPATH, "//div[@class='products']/div/h4")
+products_name_text = [product_name.text for product_name in products_name]
+assert products_name_text == original_list, f"List of products doesn't match"
+
 
 # ---------------------------------------------------------------------
 # Webelement chaining Concept: use an upper element to find a lower element in it
@@ -38,7 +47,16 @@ for article in articles:
 driver.find_element(By.CSS_SELECTOR, ".cart-icon").click()
 driver.find_element(By.XPATH, "//button[text()='PROCEED TO CHECKOUT']").click()
 
+# Validate the sum of the cart. This XPATH will return all the values from the total column
+prices = driver.find_elements(By.XPATH, "//tr/td[5]/p")
+total_amount = 0
+for price in prices:
+    total_amount += int(price.text)
 
+displayed_total_amount = int(driver.find_element(By.CSS_SELECTOR, ".totAmt").text)
+assert total_amount == displayed_total_amount, f"The total amounts are not matching"
+
+# Checking promo code is displayed
 promo_code_field = driver.find_element(By.CSS_SELECTOR, '.promoCode')
 is_promo_code_displayed = promo_code_field.is_displayed()
 
@@ -50,5 +68,9 @@ driver.find_element(By.CSS_SELECTOR, ".promoBtn").click()
 # Adding an explicit wait, and wait until the class promoInfo is present in the webpage code
 wait = WebDriverWait(driver, 10)
 wait.until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".promoInfo")))
+
+# Checking Total After Discount is lesser than Total Amount
+total_after_discount = float(driver.find_element(By.CLASS_NAME, "discountAmt").text)
+assert total_amount > total_after_discount, f"The discounted price cannot be greater than the regular total"
 
 print(driver.find_element(By.CLASS_NAME, "promoInfo").text)
