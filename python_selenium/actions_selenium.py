@@ -18,7 +18,7 @@ URL = 'https://rahulshettyacademy.com/AutomationPractice/'
 driver.get(URL)
 
 # ActionChains() allows to perform advanced actions like hover above a button, right-click, scroll up/down, double-click, drag/drop, ...
-# Create an action object by calling ActionChains class and passing it the driver
+# Create an action object by calling ActionChains class and passing the driver to it
 action = ActionChains(driver)
 
 # Hover above an element using move_to_element() method and passing to it the element we want to hover
