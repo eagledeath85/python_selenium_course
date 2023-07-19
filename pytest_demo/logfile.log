@@ -1,0 +1,7 @@
+2023-07-18 11:24:54,311 :INFO : test_edit_profile :John
+2023-07-18 11:24:54,311 :INFO : test_edit_profile :rahulshettyacademy.com
+2023-07-18 11:24:54,316 :DEBUG : pytest_demo.test_logging :A debug statement is executed
+2023-07-18 11:24:54,316 :INFO : pytest_demo.test_logging :Information statement
+2023-07-18 11:24:54,316 :WARNING : pytest_demo.test_logging :Something is in warning mode
+2023-07-18 11:24:54,316 :ERROR : pytest_demo.test_logging :A major error has happened
+2023-07-18 11:24:54,317 :CRITICAL : pytest_demo.test_logging :Critical issue
